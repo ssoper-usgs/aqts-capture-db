@@ -11,3 +11,10 @@ databaseChangeLog:
       changes:
         - sql: create index if not exists field_visit_readings_by_loc_json_data_id on ${AQTS_SCHEMA_NAME}.field_visit_readings_by_loc (partition_number, json_data_id);
         - rollback: drop index if exists ${AQTS_SCHEMA_NAME}.field_visit_readings_by_loc_json_data_id;
+
+  - changeSet:
+      author: ssoper
+      id: "create.index.${AQTS_SCHEMA_NAME}.field_visit_readings_by_loc_location_identifier"
+      changes:
+        - sql: create index if not exists field_visit_readings_by_loc_location_identifier on ${AQTS_SCHEMA_NAME}.field_visit_readings_by_loc (location_identifier);
+        - rollback: drop index if exists ${AQTS_SCHEMA_NAME}.field_visit_readings_by_loc_location_identifier;
